@@ -3,13 +3,13 @@ package iwona.pl.modol8notatnik.service;
 import iwona.pl.modol8notatnik.exception.NoteBookException;
 import iwona.pl.modol8notatnik.model.NoteBook;
 import iwona.pl.modol8notatnik.repository.NoteBookRepo;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class NoteBookService {
@@ -25,8 +25,8 @@ public class NoteBookService {
 
     @EventListener(ApplicationReadyEvent.class)
     public void init() {
-        NoteBook noteBook = new NoteBook("title1", "text");
-        NoteBook noteBook2 = new NoteBook("title2", "text1");
+        NoteBook noteBook = new NoteBook("title1", "text", LocalDate.of(2020, 05, 03));
+        NoteBook noteBook2 = new NoteBook("title2", "text1", LocalDate.of(2020, 05, 03));
         noteBookRepo.save(noteBook);
         noteBookRepo.save(noteBook2);
     }
@@ -41,21 +41,23 @@ public class NoteBookService {
 
     public NoteBook getById(Long id) {
         return noteBookRepo.findById(id).orElseThrow(() -> new NoteBookException(id));
-
     }
 
+    //put edit lista
     public boolean edit(Long id, NoteBook noteBook) {
         getById(id);
         noteBookRepo.save(noteBook);
         return false;
     }
 
-    public void editTitle(String title, String text, Long id) {
-        noteBookRepo.editNoteBook(title, text, id);
+    //put z bazydanych
+    public void editNoteBook(String title, String notice, LocalDate date, Long id) {
+        noteBookRepo.editNoteBook(title, notice, date, id);
     }
 
-    public void editText(String text, Long id) {
-        noteBookRepo.editText(text, id);
+//    patch
+    public void editNotice(String notice, Long id) {
+        noteBookRepo.editNotice(notice, id);
     }
 
     public void delete(long id) {

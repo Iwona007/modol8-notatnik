@@ -1,6 +1,8 @@
 package iwona.pl.modol8notatnik.model;
 
+import java.time.LocalDate;
 import javax.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "note_books")
@@ -11,29 +13,44 @@ public class NoteBook {
     @Column(name = "id")
     private long id;
     private String title;
-    private String text;
+    private String notice;
 
-    public NoteBook(String title , String text) {
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+//    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name ="date")
+    private LocalDate date;
+
+    public NoteBook(String title , String notice, LocalDate date) {
         this.title = title;
-        this.text = text;
+        this.notice = notice;
+        this.date = date;
     }
+
     public NoteBook() {
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     public long getId() {
         return id;
     }
 
-    public void setTextId(long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public String getText() {
-        return text;
+    public String getNotice() {
+        return notice;
     }
 
-    public NoteBook setText(String text) {
-        this.text = text;
+    public NoteBook setNotice(String notice) {
+        this.notice = notice;
         return null;
     }
 
@@ -46,11 +63,12 @@ public class NoteBook {
     }
 
     @Override
-    public String toString(){
-        return "NoteBook {"
-                + "textId=" + id
-                + "title= " + title + '\''
-                + "text= " + text + '\''
-                +'}';
+    public String toString() {
+        return "NoteBook{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", notice='" + notice + '\'' +
+                ", date=" + date +
+                '}';
     }
 }
