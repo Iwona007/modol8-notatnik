@@ -19,38 +19,38 @@ public class NoteBookController {
         this.noteBookService = noteBookService;
     }
 
-    @GetMapping  //ok
+    @GetMapping
     public List<NoteBook> getAll() {
         return noteBookService.getAll();
     }
 
-    @GetMapping("/{id}") //ok
+    @GetMapping("/{id}")
     public NoteBook getById(@PathVariable Long id) {
         return noteBookService.getById(id);
     }
 
-    @PostMapping("/new") //ok
+    @PostMapping("/new")
     public void save(@RequestBody NoteBook noteBook) {
         noteBookService.saveNotice(noteBook);
     }
 
-    @PutMapping("/edit/{id}") // z baza // ok
+    @PutMapping("/edit/{id}") // z baza
     public void editNoteBook(@RequestBody NoteBook noteBook, @PathVariable Long id) {
         noteBookService.editNoteBook(noteBook.getTitle(), noteBook.getNotice(),
                   noteBook.getDate(), noteBook.getId());
     }
 
-    @PutMapping("/editlista/{id}") // z listy bez bazy  //ok
-    public void edit(@PathVariable Long id, @RequestBody NoteBook noteBook) {
-        noteBookService.edit(id, noteBook);
-    }
+//    @PutMapping("/editlista/{id}") // z listy bez bazy  //ok
+//    public void edit(@PathVariable Long id, @RequestBody NoteBook noteBook) {
+//        noteBookService.edit(id, noteBook);
+//    }
 
-    @PatchMapping("/text/{id}") //ok
-    public void editText(@RequestBody NoteBook noteBook, @PathVariable Long id) {
+    @PatchMapping("/notice/{id}")
+    public void editNotice(@RequestBody NoteBook noteBook, @PathVariable Long id) {
         noteBookService.editNotice(noteBook.getNotice(), id);
     }
 
-    @DeleteMapping("/{id}") //ok
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         noteBookService.delete(id);
     }
