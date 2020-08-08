@@ -1,16 +1,21 @@
-# modol8-notatnik
+# NoteBook - modol8-notatnik
 Napisz Notatnik online – aplikacje z interfejsem graficznym, 
 która umożliwia na tworzenie notatek, zapisywanie 
 ich w bazie danych, późniejszą edycję, oraz wyświetlanie.
 
-Gui - Angular
+GUI - Angular
+PLase use port 8081
 
 ##
 Technologies:
-*Hibernate,
-*DataBase: H2,
-*Angular,
+*Java: 1.8,
 *Spring Boot,
-*Java: 1.8
+*JPA & Hibernate,
+*DataBase: remoteMySQL, H2,
+*Angular
 
-![App_image](src/main/resources/img/noteBook.png)
+![App_image](src/main/resources/img/add-new.PNG)
+![App_image](src/main/resources/img/angular-add-new.PNG)
+![App_image](src/main/resources/img/DB-note_books.PNG)
+![App_image](src/main/resources/img/status-404-advice.PNG)
+

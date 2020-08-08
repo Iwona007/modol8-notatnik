@@ -26,8 +26,4 @@ public interface NoteBookRepo extends JpaRepository<NoteBook, Long> {
     @Query(value = "UPDATE note_books SET note_books.notice = :notice" +
     " WHERE note_books.id = :id", nativeQuery = true)
     void editNotice(@Param("notice") String notice, @Param("id") Long id);
-
-//    @Query(value = "SELECT * FROM cars WHERE cars.model = :model", nativeQuery = true)
-//    List<Car> findCarsByModelMyImpl(@Param("model") String model);
-
 }

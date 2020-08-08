@@ -40,17 +40,12 @@ public class NoteBookController {
                   noteBook.getDate(), noteBook.getId());
     }
 
-//    @PutMapping("/editlista/{id}") // z listy bez bazy  //ok
-//    public void edit(@PathVariable Long id, @RequestBody NoteBook noteBook) {
-//        noteBookService.edit(id, noteBook);
-//    }
-
     @PatchMapping("/notice/{id}")
     public void editNotice(@RequestBody NoteBook noteBook, @PathVariable Long id) {
         noteBookService.editNotice(noteBook.getNotice(), id);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable Long id) {
         noteBookService.delete(id);
     }

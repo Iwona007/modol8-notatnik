@@ -43,19 +43,10 @@ public class NoteBookService {
         return noteBookRepo.findById(id).orElseThrow(() -> new NoteBookException(id));
     }
 
-    //put edit lista
-    public boolean edit(Long id, NoteBook noteBook) {
-        getById(id);
-        noteBookRepo.save(noteBook);
-        return false;
-    }
-
-    //put z bazydanych
     public void editNoteBook(String title, String notice, LocalDate date, Long id) {
         noteBookRepo.editNoteBook(title, notice, date, id);
     }
 
-//    patch
     public void editNotice(String notice, Long id) {
         noteBookRepo.editNotice(notice, id);
     }

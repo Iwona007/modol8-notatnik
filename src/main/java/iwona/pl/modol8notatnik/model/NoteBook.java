@@ -16,7 +16,6 @@ public class NoteBook {
     private String notice;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-//    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name ="date")
     private LocalDate date;
 
